@@ -10,15 +10,18 @@
     <script src="https://unpkg.com/vue@next"></script>
 
     <div id="app"></div>
+
     <script>
-       const vm = Vue.createApp({
+        const vm = Vue.createApp({
             data(){
                 return {
-                    text: "Hola mundo!! vamos por Vue JS"
+                    url: "https://i.pinimg.com/474x/57/84/ba/5784bab40550a1a9f387833e7a3811bb.jpg",
+                    alt: "goku"
+                   
                 };
             },
-            template: `<div v-text="text"></div>`
-       }).mount("#app");
+            template: `<img v-bind:src="url" v-bind:alt="alt">`
+        }).mount('#app');
     </script>
 </body>
 </html>
