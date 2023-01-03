@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://unpkg.com/vue@next"></script>
+    <div id="app"></div>
+
+    <script>
+        const vm = Vue.createApp({
+            data(){
+                return {
+                    text: "Puerta Cerrada",
+                    open: false,
+                   
+                };
+            },
+            methods: {
+                
+               
+            },
+            computed: {
+                label(){
+                    return this.open ? 'Cerrar' : 'Abrir';
+                }
+            },
+            watch:{
+                text(value, oldValue){
+                     // Regla es obligatorio que el watcher se llame igual que la variable que quiere observar
+                     // La funcion recibe 2 parametros. El primero es el valor actual y el segundo el valor anterior
+                     
+                     console.log("Watcher activado"); 
+                },
+                open(value){
+                    this.text = value ? 'Puerta Abierta' : 'Puerta Cerrada';
+                }
+
+
+            },
+            template: `
+                    <div>{{ text }}</div>
+                    <div><button @click="open = !open">{{ label }}</button></div>
+                    
+            `
+        }).mount("#app");
+    </script>
+    
+</body>
+</html>
